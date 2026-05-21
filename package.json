@@ -1,0 +1,29 @@
+{
+  "name": "peernex-server",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/nkarthikeyan2k1/PeerNex-Server#readme",
+  "bugs": {
+    "url": "https://github.com/nkarthikeyan2k1/PeerNex-Server/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nkarthikeyan2k1/PeerNex-Server.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
+    "socket.io": "^4.8.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}
