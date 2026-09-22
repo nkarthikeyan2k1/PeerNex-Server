@@ -14,6 +14,13 @@ function createApp() {
     res.send("OK");
   });
 
+  // Lightweight keep-alive endpoint. Point an external uptime monitor (e.g.
+  // UptimeRobot, cron-job.org) at /ping every 14 minutes so Render's free
+  // tier never goes to sleep and cold-starts don't hit your users.
+  app.get("/ping", (req, res) => {
+    res.json({ ok: true, ts: Date.now() });
+  });
+
   return app;
 }
 

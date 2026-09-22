@@ -27,7 +27,18 @@ function initSocket(httpServer) {
 
   io.on(events.CONNECTION, (socket) => {
     logger.info("user connected", socket.id);
+
+    // Send the current count directly to just this socket so it shows
+    // immediately — no waiting for the debounce window to fire.
+    socket.emit(events.USER_COUNT_UPDATE, {
+      totalUsers: io.engine.clientsCount,
+      waitingUsers: pool.size(),
+    });
+
+    // Also schedule a debounced broadcast so every other connected client
+    // gets the updated count after this new connection is fully registered.
     presence.schedule();
+
     registerHandlers(socket, { matchmaking });
   });
 
