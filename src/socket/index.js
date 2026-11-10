@@ -8,6 +8,7 @@ const RoomManager = require("../matching/RoomManager");
 const MatchmakingService = require("../matching/MatchmakingService");
 const Presence = require("./presence");
 const registerHandlers = require("./registerHandlers");
+const initAudioNamespace = require("./audio");
 
 // Build the Socket.IO server, wire up the matchmaking domain, and attach the
 // per-connection handlers. All real logic lives in ../matching and ./handlers;
@@ -15,6 +16,20 @@ const registerHandlers = require("./registerHandlers");
 function initSocket(httpServer) {
   const io = new Server(httpServer, {
     cors: { origin: config.corsOrigin },
+
+    // Keep the WebSocket alive through Render's reverse proxy — a ping every
+    // 25 s with a 20 s grace period prevents the proxy from assuming the
+    // connection is idle and closing it.
+    pingInterval: 25000,
+    pingTimeout: 20000,
+
+    // Connection State Recovery (Socket.IO ≥ 4.6): if a client disconnects
+    // briefly (network blip, Render restart), it can transparently rejoin its
+    // rooms and receive any events it missed — no manual re-subscribe needed.
+    connectionStateRecovery: {
+      maxDisconnectionDuration: 2 * 60 * 1000,  // save session for up to 2 min
+      skipMiddlewares: true,
+    },
   });
 
   const pool = new WaitingPool();
@@ -41,6 +56,8 @@ function initSocket(httpServer) {
 
     registerHandlers(socket, { matchmaking });
   });
+
+  initAudioNamespace(io);
 
   return io;
 }

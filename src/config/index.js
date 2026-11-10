@@ -17,11 +17,11 @@ const config = {
   matching: {
     // How long a user will hold out for an interest-based match before the
     // sweep is allowed to pair them with anyone available.
-    patienceMs: intFromEnv("MATCH_PATIENCE_MS", 6000),
+    patienceMs: intFromEnv("MATCH_PATIENCE_MS", 500),
     // After a pair splits, they won't be re-matched to each other for this long.
-    recentPartnerCooldownMs: intFromEnv("RECENT_PARTNER_COOLDOWN_MS", 30000),
+    recentPartnerCooldownMs: intFromEnv("RECENT_PARTNER_COOLDOWN_MS", 500),
     // How often the background sweep tries to pair long-waiting users.
-    sweepIntervalMs: intFromEnv("MATCH_SWEEP_INTERVAL_MS", 2000),
+    sweepIntervalMs: intFromEnv("MATCH_SWEEP_INTERVAL_MS", 1000),
     // Abuse limits on the interest list a client may submit.
     maxInterests: intFromEnv("MAX_INTERESTS", 10),
     maxInterestLength: intFromEnv("MAX_INTEREST_LEN", 30),

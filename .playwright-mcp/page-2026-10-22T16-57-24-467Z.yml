@@ -1,0 +1,43 @@
+- generic [active] [ref=e1]:
+  - status [ref=e2]:
+    - generic [ref=e4]: Connecting to server — may take a few seconds on first load
+  - generic [ref=e5]:
+    - banner [ref=e6]:
+      - generic [ref=e7]:
+        - link "PeerNex" [ref=e8] [cursor=pointer]:
+          - /url: /
+        - generic [ref=e10]:
+          - generic [ref=e12]: 0+
+          - generic [ref=e13]: online
+      - tablist "Chat mode" [ref=e15]:
+        - tab "Text" [ref=e16] [cursor=pointer]
+        - tab "Video" [selected] [ref=e20] [cursor=pointer]
+    - generic [ref=e26]:
+      - generic [ref=e27]:
+        - generic [ref=e28]:
+          - generic [ref=e30]:
+            - paragraph [ref=e37]: Chat with strangers instantly
+            - paragraph [ref=e38]: You'll be matched with a random anonymous peer. Your video and text never touch our servers.
+            - button "Start chatting ↵" [ref=e39] [cursor=pointer]:
+              - text: Start chatting
+              - generic [ref=e42]: ↵
+          - figure "You video" [ref=e43]:
+            - paragraph [ref=e51]: Starting camera…
+            - generic: You
+        - generic [ref=e52]:
+          - button "Mute mic" [disabled] [ref=e53]
+          - button "Turn camera off" [disabled] [ref=e57]
+          - button "Next peer" [disabled] [ref=e61]: Next
+          - button "End session" [disabled] [ref=e64]
+      - generic [ref=e68]:
+        - generic [ref=e69]: Live chat
+        - generic [ref=e72]: Chat appears once you're connected.
+        - generic [ref=e74]:
+          - textbox "Message input" [disabled] [ref=e75]:
+            - /placeholder: Press Start to find someone…
+          - generic [ref=e76]:
+            - button "Emoji" [disabled] [ref=e77]
+            - button "Interests" [disabled] [ref=e81]
+            - button "Send message" [disabled] [ref=e85]
+  - button "Open Next.js Dev Tools" [ref=e93] [cursor=pointer]
+  - alert [ref=e97]
